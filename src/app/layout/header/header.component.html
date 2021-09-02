@@ -1,0 +1,39 @@
+<div class="navbar-placeholder"></div>
+<div class="navbar-container">
+    <div class="navbar-links">
+        <button mat-icon-button *ngIf="page === 'home'" class="no-select" (click)="sidenavService.toggleNav()">
+            <span class="material-icons" style="transition: .3s; color: white; font-size: 26px;"
+                [ngStyle]="sidenavService.getChevronStyle()">
+                keyboard_double_arrow_right
+            </span>
+        </button>
+
+        <button mat-icon-button class="navbar-home" *ngIf="page !== 'home' && userId" (click)="handleRedirect('')">
+            <span class="material-icons">
+                storefront
+            </span>
+        </button>
+        <button mat-icon-button class="navbar-cart" *ngIf="userId" (click)="handleRedirect('checkout')">
+            <span [matBadge]="cartService.calculateProducts()" matBadgeSize="large" matBadgeColor="primary" class="material-icons">
+                shopping_cart
+            </span>
+        </button>
+        <button mat-icon-button class="navbar-orders-history" *ngIf="userId" (click)="handleRedirect('account')">
+            <span class="material-icons">
+                history
+            </span>
+        </button>
+        <button mat-icon-button class="navbar-about" (click)="handleRedirect('about')" class="item">
+            <span class="material-icons">
+                info
+            </span>
+        </button>
+    </div>
+    <div class="header-logout-container" (click)='this.logout()'>
+        <button mat-icon-button>
+            <span class="material-icons">
+                logout
+            </span>
+        </button>
+    </div>
+</div>

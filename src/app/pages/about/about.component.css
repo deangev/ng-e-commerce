@@ -1,0 +1,16 @@
+.about-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 65px;
+    width: calc(100vw - 65px)
+}
+
+@media screen and (max-width: 550px) {
+    .about-container {
+        margin-left: 0;
+        width: auto;
+        height: calc(100vh - 60px);
+    }
+}

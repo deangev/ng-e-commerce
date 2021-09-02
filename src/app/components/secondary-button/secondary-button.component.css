@@ -1,0 +1,12 @@
+#s-button {
+    outline: none !important;
+    padding: 2px 0;
+    color: #d51c4a;
+    border: 1px solid #d51c4a !important;
+    width: 100%;
+}
+
+#s-button:hover {
+    background: #d51c4a;
+    color: white;
+}

@@ -1,0 +1,25 @@
+<div id="search">
+    <div class="search-wrapper">
+        <input type="text" placeholder="Search..." [ngModel]="searchString" (ngModelChange)="handleChange($event)">
+        <span class="material-icons">
+            search
+        </span>
+    </div>
+</div>
+<div id="products-wrapper">
+    <mat-tab-group (selectedTabChange)="getProductsByCategory($event)" [selectedIndex]="activeTab">
+        <mat-tab [ngClass]="'category-'+i" *ngFor="let category of productsService.categories; let i = index"
+            [label]="category.name" style="overflow-x: hidden;">
+            <div class="products-wrapper">
+                <div *ngIf="productsService.isLoading">
+                    <app-skeleton *ngFor="let i of productsLength" class="product-container"></app-skeleton>
+                </div>
+                <div *ngIf="!productsService.isLoading">
+                    <app-product *ngFor="let product of productsService.products" class="product-container"
+                        [product]="product">
+                    </app-product>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

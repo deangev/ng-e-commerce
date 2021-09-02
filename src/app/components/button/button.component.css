@@ -1,0 +1,20 @@
+#m-button {
+    border: none !important;
+    outline: none !important;
+    padding: 2px 0;
+    color: white;
+    width: 100%;
+}
+
+#m-button:hover {
+    background: #ee2053;
+}
+
+#m-button div {
+    display: inline-block;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

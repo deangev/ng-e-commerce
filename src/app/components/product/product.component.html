@@ -1,0 +1,54 @@
+<mat-card class="product-card-container" style="padding: 0 16px;">
+    <mat-card-content *ngIf="isLoading"
+        style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; padding: 60px 40px;">
+        <mat-spinner color="primary" [diameter]="40"></mat-spinner>
+    </mat-card-content>
+    <mat-card-header style="border-bottom: 1px solid #e6e6e6; min-height: 110px;" *ngIf="!isLoading">
+        <div mat-card-avatar>
+            <div id="card-image"><img src={{product.image}}></div>
+
+        </div>
+        <div style="width: 70%; padding: 20px 10px;">
+            <div class="header">{{product.name}}</div>
+            <div style="margin-top: .5rem;">${{product.price.toFixed(2)}}</div>
+        </div>
+    </mat-card-header>
+    <mat-card-content style="padding: 16px 0; margin-bottom: 0;" *ngIf="!isLoading">
+        <div class="product-footer-container" *ngIf="authService.userData.id && !authService.userData.role">
+            <div style="margin-right: 5px;">
+                <p *ngIf="isAdded">Cart Updated!</p>
+                <div class="product-footer-wrapper">
+                    <div class="product-quantity-button no-select" (click)="handleQuantityClick(0)">
+                        <span class="material-icons">
+                            remove_circle
+                        </span>
+                    </div>
+                    <div style="width: 50px">
+                        <mat-form-field id="product_quantity-input" appearance="standard">
+                            <input matInput type="number" [value]="this.editedQuantity"
+                                (change)="handleQuantity($event)">
+                        </mat-form-field>
+                    </div>
+                    <div class="product-quantity-button no-select" (click)="handleQuantityClick(1)">
+                        <span class="material-icons">
+                            add_circle
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <app-add-to-cart (click)="addToCart()" [isAdded]="(product.isAdded)"></app-add-to-cart>
+        </div>
+        <div *ngIf="authService.userData.id && authService.userData.role" style="width: 100%;">
+            <app-button [text]="'Edit'" (click)="adminService.editProduct(product)"></app-button>
+        </div>
+    </mat-card-content>
+
+    <button mat-icon-button (click)="handleDeleteProduct(product._id)"
+        *ngIf="authService.userData.id && authService.userData.role && !isLoading" class="product-delete-icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill"
+            viewBox="0 0 16 16">
+            <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+        </svg>
+    </button>
+</mat-card>

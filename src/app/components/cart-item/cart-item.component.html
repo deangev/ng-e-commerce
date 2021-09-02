@@ -1,0 +1,35 @@
+<mat-card class="cart-item">
+    <div class="cart-item_header-container">
+        <div class="cart-item_image">
+            <img [src]="item.image" [alt]="item.name">
+        </div>
+        <div>
+            <div class="cart-item_header">
+                <div>{{item.name}}</div>
+            </div>
+            <p style="font-size: 13px;">${{item.price.toFixed(2)}}</p>
+        </div>
+    </div>
+    <div class="cart-item_quantity-container">
+        <div class="cart-item_quantity">{{item.quantity}} {{item.quantity > 1 ? 'items' : 'item'}}</div>
+        <div class="cart-item_edit-quantity">
+            <div class="cart-item-container no-select" (click)="handleQuantityClick(0)">
+                <span class="material-icons">
+                    remove_circle
+                </span>
+            </div>
+            <input type="number" [value]="this.editedQuantity" (change)="handleQuantity($event)" min="1" max="999">
+            <div class="cart-item-container no-select" (click)="handleQuantityClick(1)">
+                <span class="material-icons">
+                    add_circle
+                </span>
+            </div>
+            <button class="cart-item_edit-update" mat-flat-button color="primary"
+                *ngIf="this.editedQuantity !== item.quantity" (click)="handleUpdateQuantity()">Update</button>
+        </div>
+        <p>${{(item.price * item.quantity).toFixed(2)}}</p>
+    </div>
+    <div class="cart-item_remove no-select" (click)="handleRemoveProduct()">
+        <span class="material-icons">cancel</span>
+    </div>
+</mat-card>

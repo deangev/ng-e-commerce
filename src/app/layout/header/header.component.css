@@ -1,0 +1,93 @@
+.navbar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 65px;
+    height: 100vh;
+    background-color: #333333;
+    border-right: 1px solid rgba(34, 36, 38, .15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.navbar-container div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.navbar-links {
+    display: flex;
+    flex-direction: column;
+    padding-top: 65px;
+}
+
+.navbar-container button {
+    margin-bottom: 10px;
+}
+
+.navbar-container button span {
+    font-size: 1.7rem;
+    height: 1.7rem;
+    width: 1.7rem;
+    color: white;
+}
+
+.header-container {
+    height: 60px;
+    width: 100%;
+    z-index: 1;
+    border-bottom: 1px solid #dddfe1;
+    padding-left: 60px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.navbar-placeholder {
+    display: none;
+}
+
+::ng-deep .mat-badge-content.mat-badge-active {
+    font-size: 13px !important;
+}
+
+@media screen and (max-width: 550px) {
+    .header-logout-container div {
+        justify-content: flex-end;
+    }
+    .navbar-placeholder {
+        display: inline;
+        height: 65px;
+    }
+    .navbar-container {
+        width: 100%;
+        height: 60px;
+        flex-direction: row;
+        position: relative;
+        padding-left: 12px;
+    }
+    .navbar-links {
+        flex-direction: row;
+    }
+    .navbar-container button {
+        margin-bottom: 0;
+    }
+    div.navbar-container span.material-icons {
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+    }
+    .header-logout-container {
+        justify-content: flex-end;
+    }
+    div.header-logout-container button ::ng-deep span.mat-button-wrapper {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

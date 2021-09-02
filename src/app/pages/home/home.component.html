@@ -1,0 +1,15 @@
+<div *ngIf="authService.userData.id && !authService.userData.role">
+    <app-header [page]="'home'"></app-header>
+    <div id="home-container" style="display: flex;">
+        <app-cart></app-cart>
+        <app-products id="main">
+        </app-products>
+    </div>
+</div>
+<div *ngIf="authService.userData.id && authService.userData.role === 1">
+    <app-admin-header></app-admin-header>
+    <div id="home-container" style="display: flex;">
+        <app-edit-nav></app-edit-nav>
+        <app-products id="admin-main"></app-products>
+    </div>
+</div>

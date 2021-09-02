@@ -1,0 +1,91 @@
+.products-wrapper {
+    overflow: hidden;
+    padding: 30px 0;
+}
+
+.products-wrapper>div {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    justify-content: space-around;
+}
+
+#search {
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 10px;
+}
+
+#search .search-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    height: 40px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#search .search-wrapper input {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #DDDFE1;
+    outline: none;
+    border-radius: 30px;
+    height: 100%;
+    padding: 5px 50px 5px 20px;
+    transition: .3s;
+}
+
+#search .search-wrapper span {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#search .search-wrapper input:hover, #search .search-wrapper input:focus {
+    border-color: #d51c4a;
+}
+
+.product-container {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.active-search ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar, .active-search ::ng-deep .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: transparent;
+}
+
+@media screen and (max-width: 1070px) {
+    #desktop-search {
+        display: none;
+    }
+    #mobile-search-wrapper {
+        width: 100%;
+    }
+    .products-wrapper>div {
+        justify-content: center;
+    }
+    #search .search-wrapper {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    #categories-tabs {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #categories-tabs {
+        font-size: 0.68rem;
+    }
+    .product-container {
+        width: 280px !important;
+        justify-content: end;
+    }
+}

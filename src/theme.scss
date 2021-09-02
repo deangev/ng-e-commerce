@@ -1,0 +1,32 @@
+@import '../node_modules/@angular/material/theming';
+@include mat-core();
+
+$primary-palette: (
+ 100: #d51c4a,
+ contrast: (
+     100: rgba(black, 0.87),
+ )
+);
+
+$accent-palette: (
+ 100: #333333,
+ contrast: (
+     100: rgba(black, 0.87),
+ )
+);
+
+$warn-palette: (
+ 100: #ffffff,
+ contrast: (
+     100: rgba(black, 0.87),
+ )
+);
+
+
+$my-primary: mat-palette($primary-palette, 100);
+$my-accent: mat-palette($accent-palette, 100);
+$my-warn: mat-palette($warn-palette, 100);
+
+$my-theme: mat-light-theme($my-primary, $my-accent, $my-warn);
+
+@include angular-material-theme($my-theme);

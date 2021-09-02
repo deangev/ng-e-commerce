@@ -1,0 +1,88 @@
+<div class="payment-container">
+    <div>
+        <h4 class="ui dividing header">Shipping Information</h4>
+        <div style="display: flex; justify-content: space-between;">
+            <mat-form-field appearance="standard" style="width: 48%;">
+                <mat-label>First Name</mat-label>
+                <input matInput [value]="this.firstName" [(ngModel)]="this.firstName">
+            </mat-form-field>
+            <mat-form-field appearance="standard" style="width: 48%;">
+                <mat-label>Last Name</mat-label>
+                <input matInput [value]="this.lastName" [(ngModel)]="this.lastName">
+            </mat-form-field>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <mat-form-field appearance="standard" style="width: 48%;">
+                <mat-label>City</mat-label>
+                <input matInput [value]="this.city" [(ngModel)]="this.city">
+            </mat-form-field>
+            <mat-form-field appearance="standard" style="width: 48%;">
+                <mat-label>Street Address</mat-label>
+                <input matInput [value]="this.address" [(ngModel)]="this.address">
+            </mat-form-field>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <mat-form-field appearance="standard">
+                <mat-label>Date to deliver</mat-label>
+                <input matInput [min]="today" [matDatepicker]="picker3" [value]="this.dateToDeliver"
+                    [(ngModel)]="this.dateToDeliver">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="payment-billing-container">
+        <h4 class="ui dividing header">Billing Information</h4>
+        <div style="display: flex; justify-content: space-between;">
+            <mat-form-field appearance="standard" style="width: 48%;">
+                <mat-label>Card Number</mat-label>
+                <input matInput placeholder="XXXX XXXX XXXX XXXX" (ngModelChange)="handleCreditCard($event)"
+                    [ngModel]="creditCard">
+            </mat-form-field>
+            <mat-form-field appearance="standard" style="width: 48%;">
+                <mat-label>CVC</mat-label>
+                <input matInput [ngModel]="cvc" (ngModelChange)="handleCVC($event)">
+            </mat-form-field>
+
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <mat-form-field appearance="standard" style="width: 48%;">
+                <mat-label>Month</mat-label>
+                <mat-select [value]="this.month" [(ngModel)]="this.month">
+                    <mat-option *ngFor="let month of paymentsService.months;" [value]="month">
+                        {{month}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="standard" style="width: 48%;">
+                <mat-label>Year</mat-label>
+                <mat-select [value]="this.year" [(ngModel)]="this.year">
+                    <mat-option *ngFor="let year of paymentsService.years;" [value]="year">
+                        {{year}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="payment-buttons-container">
+            <mat-checkbox [(ngModel)]="printReceipt" color="primary">
+                Print Receipt?
+            </mat-checkbox>
+            <h4>Payment Total: ${{cartService.totalPrice.toFixed(2)}}</h4>
+            <div class="payment-buttons-wrapper">
+                <button mat-flat-button color="accent" style="margin-right: 10px;" (click)="handleAutoComplete()">Use my
+                    details</button>
+                <div class="payment-submit-wrapper">
+                    <button class="payment-submit-btn" mat-flat-button color="primary" (click)="handlePlaceOrder()"
+                        [disabled]="!cartService.cart?.products?.length">
+                        <div *ngIf="loaderService.isPaymentLoading"
+                            style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <mat-spinner color="warn" [diameter]="20"></mat-spinner>
+                        </div>
+                        <div *ngIf="!loaderService.isPaymentLoading">Submit Order</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

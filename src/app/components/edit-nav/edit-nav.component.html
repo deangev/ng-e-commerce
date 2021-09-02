@@ -1,0 +1,45 @@
+<div id="mySidenav" class="sidenav">
+    <div class="sidenav_wrapper">
+        <div>
+            <ngx-dropzone (change)="onSelect($event)" class="dropzone" style="z-index: 2;">
+                <ngx-dropzone-label *ngIf="!adminService.imagePreview && !adminService.product.image">Drag & Drop
+                </ngx-dropzone-label>
+            </ngx-dropzone>
+            <img *ngIf="adminService.imagePreview || adminService.product.image"
+                [src]="adminService.imagePreview || adminService.product.image" class="dropzone" alt="">
+            <div class="form-wrapper">
+                <mat-form-field appearance="standard" style="width: 100%;">
+                    <mat-label>Category</mat-label>
+                    <mat-select [value]="adminService.product.categoryId" [(ngModel)]="adminService.product.categoryId">
+                        <mat-option *ngFor="let category of productService.categories" [value]="category._id">
+                            {{category.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="standard" style="width: 100%;">
+                    <mat-label>Name</mat-label>
+                    <input style="width: 100%;" matInput [value]="adminService.product.name"
+                        [(ngModel)]="adminService.product.name">
+                </mat-form-field>
+
+                <mat-form-field appearance="standard" style="width: 100%;">
+                    <mat-label>Price</mat-label>
+                    <input matInput [value]="adminService.product.price" [(ngModel)]="adminService.product.price"
+                        type="number">
+                </mat-form-field>
+
+                <div *ngIf="adminService.isEditMode" class="edit-buttons-container">
+                    <app-secondary-button style="width: 48%" [text]="'Cancel'"
+                        (click)="adminService.cancelEditProduct()">
+                    </app-secondary-button>
+                    <app-button style="width: 48%" [text]="'Edit'" [isLoading]="loaderService.isAdminLoading"
+                        (click)="handleEditProduct()">
+                    </app-button>
+                </div>
+                <app-button *ngIf="!adminService.isEditMode" (click)="handleCreate()" [text]="'Create'"
+                    [isLoading]="loaderService.isAdminLoading"></app-button>
+            </div>
+        </div>
+    </div>
+</div>

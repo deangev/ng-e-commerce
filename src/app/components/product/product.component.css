@@ -1,0 +1,106 @@
+.product-card-container {
+    padding: 0;
+    margin: 10px;
+    min-width: 280px;
+    border: 1px solid #eaeaea;
+}
+
+.header {
+    color: #d51c4a;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: default;
+}
+
+#ui-card-wrapper {
+    display: flex;
+}
+
+#card-image {
+    height: 78px;
+    min-width: 70px;
+    position: relative;
+    background: #fff;
+}
+
+#card-image img {
+    width: 110%;
+    height: 100%;
+    padding: 15px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    object-fit: cover;
+}
+
+#product_quantity-input {
+    color: black;
+    width: 49px;
+    position: absolute;
+    top: -30px;
+    text-align: center;
+}
+
+.product-footer-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.product-footer-container p {
+    position: absolute;
+    left: 3px;
+    top: -10px;
+}
+
+.product-footer-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.product-quantity-button {
+    height: 22px;
+    color: #d51c4a;
+    cursor: pointer;
+}
+
+.product-quantity-button span {
+    font-size: large;
+}
+
+.product-quantity-button:hover span {
+    color: #ee2053;
+}
+
+.product-quantity-button:active span {
+    color: #be1640;
+}
+
+.product-delete-icon-wrapper {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    z-index: 1;
+    cursor: pointer;
+    color: #d51c4a;
+}
+
+.product-delete-icon-wrapper:hover {
+    color: #ee2053;
+}
+
+.product-delete-icon-wrapper svg {
+    width: 18px;
+    height: 18px;
+}
+
+@media screen and (max-width: 420px) {
+    .product-container {
+        width: 280px !important;
+        justify-content: end;
+    }
+}

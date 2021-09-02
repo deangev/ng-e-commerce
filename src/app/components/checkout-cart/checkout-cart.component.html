@@ -1,0 +1,58 @@
+<div class="checkout-cart_container">
+    <div id="search">
+        <div class="search-wrapper">
+            <input type="text" placeholder="Search in your cart" [ngModel]="searchString"
+                (ngModelChange)="handleChange($event)">
+            <span class="material-icons">
+                search
+            </span>
+        </div>
+    </div>
+    <div class="checkout-cart_table-container">
+        <div>
+            <table class="table" style="margin: 0;">
+                <thead>
+                    <tr>
+                        <th style="padding-left: 10px">Product</th>
+                        <th>Quantity</th>
+                        <th>Price (Per Item)</th>
+                        <th>Total Price (Per Product)</th>
+                    </tr>
+                </thead>
+                <tbody class="checkout-cart_table-body">
+                    <tr class="checkout-cart_empty-loading-container" *ngIf="!cartService.cart?.products?.length">
+                        <div *ngIf="isLoading">
+                            <mat-spinner [diameter]="50"></mat-spinner>
+                        </div>
+                        <div *ngIf="!isLoading">Cart is empty</div>
+                    </tr>
+                    <tr class="checkout-cart-tr" *ngFor="let item of searchedProducts" style="height: 50px;">
+                        <td style="padding-left: 10px">
+                            <div style="display: flex; align-items: center;">
+                                <div style="width: 30px; margin-right: 10px;">
+                                    <img [src]="item.image" style="width: 100%; height: 100%;" [alt]="item.name">
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <p class="checkout-cart-item-name" [innerHTML]="item.name" style="margin: 0;"></p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{item.quantity}}</td>
+                        <td>${{item.price.toFixed(2)}}</td>
+                        <td>${{(item.quantity * item.price).toFixed(2)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="checkout-cart_no-results-container"
+            *ngIf="!isLoading && cartService.cart?.products?.length && !searchedProducts.length">
+            <div style="width: 100%;">No Results</div>
+        </div>
+        <div class="checkout-cart_details">
+            <h4>Total Price: ${{cartService.totalPrice.toFixed(2)}} <span style="margin-left: 10px;">(
+                    {{this.cartService.calculateProducts()}} Items )</span></h4>
+            <button mat-raised-button style="color: #d51c4a;" (click)="this.router.navigate([''])">Continue
+                Shopping</button>
+        </div>
+    </div>
+</div>

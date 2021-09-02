@@ -1,0 +1,74 @@
+<app-header></app-header>
+<div class="login-page">
+    <div class="login-container primary-middle" *ngIf="!this.isRegister">
+        <mat-card>
+            <h1>Sign In</h1>
+            <mat-form-field appearance="standard" style="width: 100%;">
+                <mat-label>Username</mat-label>
+                <input matInput [(ngModel)]="loginUsername">
+            </mat-form-field>
+            <mat-form-field appearance="standard" style="width: 100%;">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" [(ngModel)]="loginPassword">
+            </mat-form-field>
+            <p>Don't have an account? <span class="sign-link" (click)="isRegister = true">Sign Up</span></p>
+            <div class="auth-button">
+                <app-button [text]="'Sign In'" [isLoading]="loaderService.isAuthLoading" (click)="handleLogin()"></app-button>
+            </div>
+        </mat-card>
+    </div>
+    <div class="register-container primary-middle" *ngIf="this.isRegister">
+        <mat-card>
+            <h1>Sign Up</h1>
+            <div *ngIf='currentRegisterPage === 1'>
+                <mat-form-field appearance="standard" style="width: 100%;">
+                    <mat-label>Id</mat-label>
+                    <input matInput placeholder="Please Enter 9 digits ID" type="password"
+                        [(ngModel)]="authService.userData.ID">
+                </mat-form-field>
+                <mat-form-field appearance="standard" style="width: 100%;">
+                    <mat-label>Username</mat-label>
+                    <input matInput [(ngModel)]="authService.userData.username">
+                </mat-form-field>
+                <mat-form-field appearance="standard" style="width: 100%;">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" [(ngModel)]="authService.userData.password">
+                </mat-form-field>
+                <mat-form-field appearance="standard" style="width: 100%;">
+                    <mat-label>Password Check</mat-label>
+                    <input matInput type="password" [(ngModel)]="authService.userData.passwordCheck">
+                </mat-form-field>
+            </div>
+            <div *ngIf='currentRegisterPage === 2'>
+                <mat-form-field appearance="standard" style="width: 100%;">
+                    <mat-label>First Name</mat-label>
+                    <input matInput [(ngModel)]="authService.userData.firstName">
+                </mat-form-field>
+                <mat-form-field appearance="standard" style="width: 100%;">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput [(ngModel)]="authService.userData.lastName">
+                </mat-form-field>
+                <mat-form-field appearance="standard" style="width: 100%;">
+                    <mat-label>Address</mat-label>
+                    <input matInput [(ngModel)]="authService.userData.address">
+                </mat-form-field>
+                <mat-form-field appearance="standard" style="width: 100%;">
+                    <mat-label>City</mat-label>
+                    <input matInput [(ngModel)]="authService.userData.city">
+                </mat-form-field>
+            </div>
+            <p style="margin-top: 10px;">Already have an account? <span class="sign-link"
+                    (click)="isRegister = false">Sign
+                    in</span></p>
+            <div class="auth-button">
+                <app-button [text]="'Next'" [isLoading]="loaderService.isAuthLoading" *ngIf='currentRegisterPage === 1'
+                    (click)="checkFirstRegisterPage()">
+                </app-button>
+            </div>
+            <div class="auth-button">
+                <app-button style="width: 100%;" [text]="'Sign up'" [isLoading]="loaderService.isAuthLoading"
+                    *ngIf='currentRegisterPage === 2' (click)="handleRegister()"></app-button>
+            </div>
+        </mat-card>
+    </div>
+</div>

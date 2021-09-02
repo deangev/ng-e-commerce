@@ -1,0 +1,60 @@
+.login-page {
+    height: calc(100vh - 60px);
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 60px;
+    display: flex;
+}
+
+.login-container {
+    width: 30%;
+    min-width: 370px;
+    height: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Chrome, Safari, Edge, Opera */
+
+.login-page input::-webkit-outer-spin-button, .login-page input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+
+.login-page input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.register-container {
+    width: 30%;
+    min-width: 370px;
+    height: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sign-link {
+    text-decoration: underline;
+    color: #e21a4c;
+    cursor: pointer;
+}
+
+.auth-button {
+    color: white;
+    width: 100px;
+}
+
+.auth-button:hover {
+    background-color: #ec1b50 !important;
+    border-radius: 4px;
+}
+
+.auth-button:focus {
+    background-color: #ec1b50 !important;
+}

@@ -1,0 +1,6 @@
+<button id="m-button" mat-flat-button color="primary">
+    <div *ngIf="isLoading" [style]="isLoading && 'padding: 3.1px 0'">
+        <mat-spinner color="warn" [diameter]="30"></mat-spinner>
+    </div>
+    <div *ngIf="!isLoading">{{text}}</div>
+</button>

@@ -1,0 +1,116 @@
+.navbar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 65px;
+    height: 100vh;
+    background-color: #333333;
+    border-right: 1px solid rgba(34, 36, 38, .15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.navbar-top-icon-container>div {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.navbar-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-container button span {
+    font-size: 1.8rem;
+    height: 1.8rem;
+    width: 1.8rem;
+    color: white;
+}
+
+.header-logout-container {
+    display: flex;
+    justify-content: center;
+}
+
+div.header-logout-container span.material-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-right: 0;
+}
+
+.header-container {
+    height: 60px;
+    width: 100%;
+    z-index: 1;
+    border-bottom: 1px solid #dddfe1;
+    padding-left: 60px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.navbar-placeholder {
+    display: none;
+}
+
+.open-sidenav-button {
+    padding-top: 0 !important;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 550px) {
+    .header-logout-container button {
+        justify-content: flex-end;
+    }
+    .navbar-placeholder {
+        display: inline;
+        height: 65px;
+    }
+    .navbar-container {
+        width: 100%;
+        height: 60px;
+        flex-direction: row;
+        position: relative;
+        padding: 0 20px;
+    }
+    .navbar-top-icon-container {
+        padding: 0;
+        flex-direction: row !important;
+        align-items: center;
+    }
+    .navbar-links {
+        flex-direction: row;
+    }
+    .navbar-top-icon-container>div {
+        margin-bottom: 0;
+        width: 40% !important;
+    }
+    .header-logout-container {
+        display: flex;
+        align-items: center;
+    }
+    div.navbar-container span.material-icons {
+        font-size: 1.6rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    div.header-logout-container span.material-icons {
+        display: flex;
+        align-items: center;
+        font-size: 1.4rem;
+    }
+
+    .open-sidenav-button {
+        margin-right: 5px;
+    }
+}

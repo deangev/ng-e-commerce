@@ -1,0 +1,31 @@
+#main, #admin-main {
+    transition: margin-left .5s;
+    padding: 16px;
+    margin-left: 380px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+@media screen and (max-width: 750px) {
+    #main, #admin-main {
+        width: calc(100vw - 65px);
+        margin-left: 65px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #main, #admin-main {
+        margin-left: 0;
+        padding-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #main, #admin-main {
+        width: 280px;
+    }
+}

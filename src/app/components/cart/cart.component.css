@@ -1,0 +1,135 @@
+.sidenav {
+    height: 100vh;
+    width: 310px;
+    position: fixed;
+    z-index: 3;
+    left: 65px;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    box-shadow: .5px 0 .2px 0px #888;
+}
+
+.sidenav_wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.sidenav_cart-items-container {
+    height: 100%;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    padding: 10px 0 20px;
+    overflow: hidden auto;
+}
+
+.sidenav_empty-cart {
+    color: lightgray;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.sidenav_empty-cart svg {
+    height: 41px;
+    width: -webkit-fill-available;
+}
+
+.sidenav_empty-cart h3 {
+    text-align: center;
+}
+
+.sidenav_footer {
+    background: #d51c4a;
+    flex: 1;
+    border-top: 1px solid #DDDFE1;
+    width: 310px;
+    height: 100%;
+    padding: 4%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.sidenav_footer h5 {
+    font-size: 120%;
+}
+
+.sidenav_footer>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidenav_footer>div>button {
+    width: 48%;
+}
+
+.sidenav_footer>div>button:first-child:hover {
+    background-color: rgb(225, 227, 230)
+}
+
+.clear-button {
+    background: #333333;
+    border: 2.3px solid white;
+    border-radius: 4px;
+    color: white;
+}
+
+.clear-button:hover {
+    background-color: #444444;
+}
+
+.sidenav_wrapper>div:first-child {
+    height: 85%;
+}
+
+.sidenav_wrapper>div:last-child {
+    height: 15%;
+}
+
+.mat-list-item-content {
+    padding: 0 4px;
+}
+
+@media screen and (max-width: 850px) {
+    .sidenav_footer {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .sidenav {
+        width: 0;
+    }
+}
+
+@media screen and (max-height: 630px) {
+    .sidenav_wrapper>div:first-child {
+        height: 80%;
+    }
+    .sidenav_wrapper>div:last-child {
+        height: 20%;
+    }
+    .sidenav_footer {
+        padding: 9%;
+    }
+}
+
+@media screen and (max-height: 580px) {
+    .sidenav_wrapper>div:first-child {
+        height: 75%;
+    }
+    .sidenav_wrapper>div:last-child {
+        height: 25%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .sidenav {
+        left: 0;
+        height: calc(100vh - 60px);
+    }
+}
