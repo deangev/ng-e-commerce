@@ -12,7 +12,7 @@
         <div class="tab" *ngFor="let order of orderService.orders; index as i">
             <input type="checkbox" [id]="'chck' + i">
             <label class="tab-label" [for]="'chck' + i">${{order.totalPrice.toFixed(2)}}
-                | {{order.products.length}} items | {{formatDate(order.createdAt)}}
+                | {{cartService.calculateProducts(order.products)}} items | {{formatDate(order.createdAt)}}
             </label>
             <div class="tab-content row" style="padding: 0 10px;">
                 <div *ngFor="let product of order.products" class="order-history-product-item">

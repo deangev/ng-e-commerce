@@ -28,7 +28,6 @@ export class CartService {
     try {
       this.cart = await this.api.createGetService(this.setting.baseUrl + '/cart/?userId=' + userId) as Cart
       this.calculateTotalPrice()
-      this.calculateProducts()
       return this.cart
     } catch (err) {
       console.error(err)
@@ -97,7 +96,7 @@ export class CartService {
     }
   }
 
-  calculateProducts() {
-    return this.cart.products.reduce((sum: number, product: Product) => sum + product.quantity, 0)
+  calculateProducts(products: Product[] = this.cart.products) {
+    return products.reduce((sum: number, product: Product) => sum + product.quantity, 0)
   }
 }

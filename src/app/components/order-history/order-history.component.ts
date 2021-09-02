@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import User from 'src/app/models/User';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { CartService } from 'src/app/services/cart/cart.service';
 import { OrdersService } from 'src/app/services/orders/orders.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { OrdersService } from 'src/app/services/orders/orders.service';
 export class OrderHistoryComponent implements OnInit {
   userId: string = ''
   isLoading: boolean = true
-  constructor(public orderService: OrdersService, public authService: AuthService, public router: Router) { }
+  constructor(public orderService: OrdersService, public authService: AuthService, public router: Router, public cartService: CartService) { }
 
   async ngOnInit(): Promise<string | void> {
     let token = localStorage.getItem('auth-token')
